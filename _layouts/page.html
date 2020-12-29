@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<h1 class="mb-3">{{ page.title }}</h1>
+
+<section id="page" class="mb-3">
+    {{ content }}
+</section>
+
+{% if page.comments %}
+{% include comments.html %}
+{% endif %}
+
+<hr>
+<a class="btn btn-light" href="#navbar"">&uarr; Top of Page</a>

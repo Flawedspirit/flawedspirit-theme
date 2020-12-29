@@ -1,0 +1,34 @@
+<div class="card shadow-1dp mb-3">
+    <div id="search-container" class="card-body">
+        <label for="search"><h4>Search</h4></label>
+        <input type="text" class="form-control" name="search" id="search-input">
+    </div>
+    <ul id="results-container" class="list-group list-group-flush"></ul>
+</div>
+
+<div class="card shadow-1dp">
+    <div class="card-header">
+        <h4>Latest Posts</h4>
+    </div>
+    {% assign posts = site.posts | limit:5 | sort: 'date' | reverse %}
+    <ul class="list-group list-group-flush">
+        {% for post in posts %}
+        <li class="list-group-item">
+            <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+            <span class="text-muted small no-wrap"> ({{ post.date | date: '%b %d, %Y' }})</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="card-header">
+        <h4>By Category</h4>
+    </div>
+    {% assign categories = site.categories | sort %}
+    <ul class="list-group list-group-flush">
+        {% for category in categories %}
+        {% capture category_name %}{{ category | first }}{% endcapture %}
+        <li class="list-group-item">
+            <a href="{{site.baseurl}}/categories#{{ category_name | downcase | slugize}}">{{ category_name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

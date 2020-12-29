@@ -1,0 +1,29 @@
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991px) {
+    .container {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    #navbar {
+        #nav-container {
+            .navbar-nav {
+                .nav-item {
+                    .nav-link {
+                        background-color: $gray-700;
+                        color: white;
+                        height: 3rem;
+                        padding: 0.5rem 1rem;
+                    }
+
+                    .dropdown-menu {
+                        background-color: $gray-600;
+                        border: none;
+                        border-bottom-left-radius: 0;
+                        border-bottom-right-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+}

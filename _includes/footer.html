@@ -1,0 +1,35 @@
+    <footer class="footer shadow-inverse-1dp">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <!-- <script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script> -->
+        <script src="{{ site.baseurl }}/assets/js/simple-jekyll-search.min.js"></script>
+        <script src="{{ site.baseurl }}/assets/js/disqus-loader.min.js"></script>
+        <script type="text/javascript">
+            SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            searchResultTemplate: '<li class="list-group-item"><a href="{url}">{title}</a></li>',
+            noResultsText: '<li class="list-group-item">No result found</li>',
+            json: '/sitemap.json'
+            })
+        </script>
+        <script type="text/javascript">
+            let options = {
+                scriptUrl: '//{{ site.data.main.disqus.shortname }}.disqus.com/embed.js',
+                disqusConfig: function() {
+                    this.page.url = '{{ page.url | absolute_url }}';
+                    this.page.identifier = '{{ page.id }}';
+                }
+            };
+            $.disqusLoader( '.disqus', options );
+        </script>
+
+        <div class="container text-center">
+            <img class="py-3" src="{{ "/assets/images/logo-footer.svg" | relative_url }}" alt="Flawedspirit Logo" height="80px">
+            <p>Flawedspirit's Library &copy; {{ site.time | date: '%Y' }}</p>
+            <p>All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+---
+layout: default
+---
+<div class="mb-3">
+    {% include introduction.html %}
+</div>
+
+{% for post in paginator.posts %}
+    {% if page.list_title %}
+    <h2 class="card-title entry-title mb-0">{{ page.list_title }}</h2>
+    {% endif %}
+
+    <div class="card shadow-1dp mb-5">
+        <div class="card-header">
+            <h2 class="card-title entry-title mb-0">
+                <a class="post-link" href="{{ post.url }}">{{ post.title | escape }}</a>
+            </h2>
+            <div class="metadata">{% include post-metadata.html %}</div>
+        </div>
+        <div class="card-body">
+            {% if post.thumbnail %}
+            <img class="rounded float-right ml-2" src="{{ post.thumbnail }}" height="160px" width="160px">
+            {% endif %}
+            {{ post.excerpt }}
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-sm btn-primary" href="{{ post.url }}">Read More &rarr;</a>
+            <span class="text-muted float-right"><strong>Categories:</strong>
+            {% for category in post.categories %}<a href="{{site.baseurl}}/categories/#{{ category | downcase | slugize}}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}
+            </span>
+        </div>
+    </div>
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<nav class="d-flex justify-content-center" aria-label="Page navigation">
+    <ul class="pagination shadow-1dp">
+        {% if paginator.previous_page %}
+        <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | relative_url }}"><strong>Previous</strong></a></li>
+        {% else %}
+        <li class="page-item"><span class="page-link disabled">Previous</li>
+        {% endif %}
+        {% for page in (1 .. paginator.total_pages) %}
+        {% if page == paginator.page %}
+        <li class="page-item"><strong class="page-link disabled">{{ page }}</strong></li>
+        {% elsif page == 1 %}
+        <li class="page-item"><a class="page-link" href="/">{{ page }}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if paginator.next_page %}
+        <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | relative_url }}"><strong>Next</strong></a></li>
+        {% else %}
+        <li class="page-item"><span class="page-link disabled">Next</li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+<hr>
+<a class="btn btn-light" href="#navbar"">&uarr; Top of Page</a>

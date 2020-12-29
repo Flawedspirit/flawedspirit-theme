@@ -1,0 +1,13 @@
+{% include head.html %}
+    <div class="container">
+        <div class="row">
+            <main id="primary" class="content-area col-xl-8 order-2 order-xl-1 mb-3">
+                {{ content }}
+            </main>
+
+            <aside id="sidebar" class="sidebar col-xl-4 order-1 order-xl-2 mb-3">
+                {% include sidebar.html %}
+            </aside>
+        </div>        
+    </div>
+{% include footer.html %}

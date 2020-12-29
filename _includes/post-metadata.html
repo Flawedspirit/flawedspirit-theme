@@ -1,0 +1,27 @@
+{% if page.is_post %}
+    {% assign month = page.date | date: '%B' %}
+    {% assign day   = page.date | date: '%-d' %}
+    {% assign year  = page.date | date: '%Y at ' %}
+    {% assign time  = page.date | date: '%l:%M %P' %}
+    {% assign tz    = page.date | date: '%Z' %}
+{% else %}
+    {% assign month = post.date | date: '%B' %}
+    {% assign day   = post.date | date: '%-d' %}
+    {% assign year  = post.date | date: '%Y at ' %}
+    {% assign time  = post.date | date: '%l:%M %P' %}
+    {% assign tz    = post.date | date: '%Z' %}
+{% endif %}
+<span id="metadata">
+    <img class="avatar avatar-24 photo rounded-circle" 
+        src="https://secure.gravatar.com/avatar/{{ site.data.main.author.gravatar }}?d={{ site.data.main.gravatar.default }}&r={{ site.data.main.gravatar.max_rating | default: "g" }}" 
+        alt="{{ site.data.main.author.name }}'s avatar" height="24px" width="24px">
+    {{ site.data.main.author.name }} &ndash; {{ month }}
+    {% case day %}
+        {% when '1' or '21' or '31' %}{{ day }}st,
+        {% when '2' or '22' %}{{ day }}nd,
+        {% when '3' or '23' %}{{ day }}rd,
+        {% else %}{{ day }}th,
+    {% endcase %}
+    {{ year }}
+    <abbr title="{{ tz }}">{{ time }}</abbr>
+</span>

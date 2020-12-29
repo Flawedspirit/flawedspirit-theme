@@ -1,0 +1,11 @@
+{% if page.comments != false and jekyll.environment == "production" %}
+<h2 class="mb-2">Comments</h2>
+
+<div class="alert alert-primary">
+    <strong>Basic Comment Policy:</strong>
+    <p>Be civil, and post as if you were talking with other commenters face-to-face. Do not post spam, threaten, or harass anyone. Your grandma might read your comment, and you don't want to disappoint her, do you?</p>
+</div>
+
+<div id="disqus_thread" class="disqus"></div>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}

@@ -1,0 +1,22 @@
+title: Your Website
+author:
+  name:
+  email:
+  # This is an MD5 hash of your Gravatar login email
+  gravatar:
+description: >- # this means to ignore newlines until "banner_image:"
+  Put an exciting description of your website here!
+banner_image:
+  path: "/assets/images/banner.png"
+  enabled: true
+gravatar:
+  # More Info: https://en.gravatar.com/site/implement/images
+  # Default image served if an email hash doesn't exist
+  # Allowed values: [ 404 | mp | identicon | monsterid | wavatar | retro | robohash | blank ]
+  default: identicon
+  # Max rating allowed to be served by Gravitar
+  # Allowed values: [ g | pg | r | x ]
+  max_rating: pg
+disqus:
+  shortname:
+google_analytics:

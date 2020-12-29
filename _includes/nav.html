@@ -1,0 +1,51 @@
+<header id="navbar" class="container-fluid mb-4" role="navigation">
+    <div id="nav-container" class="row shadow-1dp">
+        <div id="nav-title" class="col-lg-3">
+            <a href="{{ "/" | absolute_url }}"><img class="py-3 mx-auto d-block logo"
+                    src="/assets/images/logo-header.svg" height="80px"></a>
+        </div>
+
+        <div id="nav-main" class="col-lg-9 p-0">
+            <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content"
+                    aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div id="nav-content" class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                    {% for item in site.data.navigation.nav %}
+                        {% if item.subfolderitems[0] %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ item.title }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for entry in item.subfolderitems %}
+                                {% if entry.page == "divider" %}
+                                <div class="dropdown-divider"></div>
+                                {% else %}
+                                <a class="dropdown-item" href="{{ entry.url | absolute_url }}">{{ entry.page }}</a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ item.url | absolute_url }}">{{ item.title }}</span></a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    {% if site.data.main.banner_image.enabled %}
+    <div id="banner" class="row shadow-1dp">
+        <div class="banner-img col-lg-12">
+            <img class="banner mx-auto" src="{{ site.data.main.banner_image.path }}">
+        </div>
+    </div>
+    {% endif %}
+</header>

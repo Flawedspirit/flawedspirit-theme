@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% seo %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
+    {% if jekyll.environment == 'production' and site.data.main.google_analytics %}
+    {% include google-analytics.html %}
+    {% endif %}
+    <title>{{ site.data.main.title }} {% if page.title %}| {{ page.title }}{% endif %}</title>
+
+    {% include nav.html %}
+</head>
+<body>
