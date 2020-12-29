@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["me@flawedspirit.ca"]
 
   spec.summary       = "The custom theme for flawedspirit.ca"
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/Flawedspirit/flawedspirit-theme"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|LICENSE|README|_config\.yml)!i) }
